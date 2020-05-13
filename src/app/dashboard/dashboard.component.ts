@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCheese } from '@fortawesome/free-solid-svg-icons';
+import {IngredientsService} from '../services/ingredients.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +10,12 @@ import { faCheese } from '@fortawesome/free-solid-svg-icons';
 export class DashboardComponent implements OnInit {
   faCheese = faCheese;
 
-  constructor() { }
+  constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit(): void {
+    this.ingredientsService.get().subscribe(result => {
+      console.log(result);
+    });
   }
 
 }
